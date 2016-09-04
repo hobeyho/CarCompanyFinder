@@ -26,7 +26,8 @@
         android:id="@+id/textViewHelp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="18dp"
+        android:textSize="17dp" />
 
     <Button
         android:layout_width="fill_parent"

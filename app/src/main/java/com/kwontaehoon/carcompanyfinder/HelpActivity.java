@@ -20,11 +20,14 @@ public class HelpActivity extends AppCompatActivity {
         textViewHelp = (TextView) findViewById(R.id.textViewHelp);
         btnSample = (Button) findViewById(R.id.btnSample);
 
-        textViewHelp.setText("This App is used for determining car logos that you think is adequate. " +
-                "This App provides you a variety of answer of car logo that you do not know. " +
-                "This App uses Watson Visual Recognition ApI. When you press the button \"photo\", " +
-                "the camera screen appears at the screen. When You take a good shot, the picture gets " +
-                "uploaded to Watson and the AI sends the value back to our app. Please make your shot as good as it would be in a google image if you search the word car logo. ");
+        textViewHelp.setText("This App is used for finding car companies using their logos. " +
+                "This App uses Watson Visual Recognition Api. When you press the button \"photo\", " +
+                "the camera screen appears at the screen.(Please set camera resolution to 2M for best performance). " +
+                "When You take a good shot, the picture gets " +
+                "uploaded to Watson and the AI finds the most similar logo and sends the value back to our app." +
+                "Please view sample photos to see how you should take the photo. " +
+                "Due to lack of samples, this app can only determine between 5 car companies at the moment: Mercedes-Benz, BMW, Equus, Hyundai, Lexus. " +
+                "I will work on adding more companies in the future!");
 
         btnSample.setOnClickListener(new View.OnClickListener(){
             @Override

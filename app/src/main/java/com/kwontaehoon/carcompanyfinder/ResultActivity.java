@@ -54,7 +54,6 @@ public class ResultActivity extends AppCompatActivity {
             url = "https://en.wikipedia.org/wiki/BMW";
         } else if(ans.equals("kia")){
             textViewResult.setText("Kia");
-            textViewResult.setText("Kia");
             imageViewResult.setImageResource(R.drawable.kia);
             url = "https://en.wikipedia.org/wiki/Kia_Motors";
         } else if(ans.equals("hyundai")){
@@ -63,44 +62,44 @@ public class ResultActivity extends AppCompatActivity {
             url = "https://en.wikipedia.org/wiki/Hyundai";
         } else if(ans.equals("chevolet")){
             textViewResult.setText("Chevolet");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.chevrolet);
+            url = "https://en.wikipedia.org/wiki/Chevrolet";
         } else if(ans.equals("equus")){
             textViewResult.setText("Equus");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.equus);
+            url = "https://en.wikipedia.org/wiki/Hyundai_Equus";
         } else if(ans.equals("genesis")){
             textViewResult.setText("Genesis");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.genesis);
+            url = "https://en.wikipedia.org/wiki/Genesis_Motors";
         } else if(ans.equals("honda")){
             textViewResult.setText("Honda");
             imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            url = "https://en.wikipedia.org/wiki/Honda";
         } else if(ans.equals("lexus")){
             textViewResult.setText("Lexus");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.lexus);
+            url = "https://en.wikipedia.org/wiki/Lexus";
         } else if(ans.equals("opirus")){
             textViewResult.setText("Opirus");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.oprius);
+            url = "https://en.wikipedia.org/wiki/Kia_Opirus";
         } else if(ans.equals("samsung")){
             textViewResult.setText("Samsung");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.samsung);
+            url = "https://en.wikipedia.org/wiki/Renault_Samsung_Motors";
         } else if(ans.equals("ssangyong")){
             textViewResult.setText("Ssangyong");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.ssangyong);
+            url = "https://en.wikipedia.org/wiki/SsangYong_Motor";
         } else if(ans.equals("toyota")){
             textViewResult.setText("Toyota");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.toyota);
+            url = "https://en.wikipedia.org/wiki/Toyota";
         } else if(ans.equals("volkswagon")){
             textViewResult.setText("Volkswagon");
-            imageViewResult.setImageResource(R.drawable.hyundai);
-            url = "https://en.wikipedia.org/wiki/Hyundai";
+            imageViewResult.setImageResource(R.drawable.volkswagen);
+            url = "https://en.wikipedia.org/wiki/Volkswagen";
         } else {
             textViewResult.setText("오류");
             btnLearn.setEnabled(false);
