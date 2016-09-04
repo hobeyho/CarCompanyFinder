@@ -19,6 +19,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.internal.http.multipart.MultipartEntity;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         btnPhoto=(Button) findViewById(R.id.btnPhoto);
         imageViewPhoto=(ImageView) findViewById(R.id.imageViewPhoto);
 
+        btnUpload.setEnabled(false);
+
 
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                uploadImage();
+                classify();
             }
         });
 
@@ -100,6 +105,43 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, setImageUri());
         startActivityForResult(intent, CAPTURE_IMAGE);
     }
+
+    public void classify(){
+
+        Thread thread = new Thread(new Runnable()
+        {
+            @Override
+            public void run(){
+                try{
+                    VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
+                    service.setApiKey("a6b43b1903b1deb5557398b4b0a47ffdddc8cbd6");
+
+                    ClassifyImagesOptions options = new ClassifyImagesOptions.Builder()
+                            .images(file)
+                            .classifierIds("carlogo_custom_1959643290")
+                            .build();
+                    VisualClassification result = service.classify(options).execute();
+                    Log.d("debugging","result:"+result);
+                    startActivityFromMainThread(result.toString());
+                } catch (Exception e){
+                    e.getStackTrace();
+
+                }
+            }
+        });
+        thread.start();
+
+    }
+    public void startActivityFromMainThread(String result){
+        Activity fromActivity = MainActivity.this;
+        Class toActivity = ResultActivity.class;
+        Intent intent2 = new Intent (fromActivity, toActivity);
+        intent2.putExtra("result", result);
+        startActivity(intent2);
+
+    }
+
+
     public void uploadImage(){
         HttpURLConnection conn = null;
         DataOutputStream dos = null;
@@ -228,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_CANCELED) {
+            btnUpload.setEnabled(true);
             if (requestCode == PICK_IMAGE) {
                 selectedImagePath = getAbsolutePath(data.getData());
                 imageViewPhoto.setImageBitmap(decodeFile(selectedImagePath));
