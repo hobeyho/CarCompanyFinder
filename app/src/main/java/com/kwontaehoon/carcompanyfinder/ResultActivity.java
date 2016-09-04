@@ -37,7 +37,11 @@ public class ResultActivity extends AppCompatActivity {
         Log.d("debugging",result);
         int position = result.indexOf("\"class\"");
         int position2 = result.indexOf(",", position);
-        String ans = result.substring(position+10, position2-1);
+        String ans = "";
+        if(result.equals("")){
+            ans = "error";
+        }
+        ans = result.substring(position+10, position2-1);
         Log.d("debugging",ans);
 
         if(ans.equals("benz")){
