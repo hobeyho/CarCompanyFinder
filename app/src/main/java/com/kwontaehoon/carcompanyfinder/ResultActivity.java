@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ResultActivity extends AppCompatActivity {
 
     Button btnDone, btnLearn;
@@ -35,13 +38,43 @@ public class ResultActivity extends AppCompatActivity {
             result = extras.getString("result");
         }
         Log.d("debugging",result);
-        int position = result.indexOf("\"class\"");
-        int position2 = result.indexOf(",", position);
+
+        HashMap<String, Double> list = new HashMap<String, Double>();
+
         String ans = "";
+
+        int position = result.indexOf("\"class\"");
+        while(position > 0){
+            result = result.substring(position+10);
+            int position2 = result.indexOf("\"");
+            ans = result.substring(0, position2);
+            int position3 = result.indexOf("\"score\"");
+            int position4 = result.indexOf("}");
+            double score = Double.parseDouble(result.substring(position3+10, position4-4));
+            Log.d("debugging", "ANS: " + ans + " SCORE: " + score);
+            list.put(ans, score);
+            position = result.indexOf("\"class\"");
+        }
+
+        Log.d("debugging", ""+list);
+
+        String car = "";
+        double sco = 0;
+        for(Map.Entry<String, Double> entry: list.entrySet()){
+            String car2 =  entry.getKey();
+            double sco2 = entry.getValue();
+            if(sco2 > sco){
+                sco = sco2;
+                car = car2;
+            }
+        }
+
+        ans = car;
+
         if(result.equals("")){
             ans = "error";
         }
-        ans = result.substring(position+10, position2-1);
+
         Log.d("debugging",ans);
 
         if(ans.equals("benz")){
@@ -78,7 +111,7 @@ public class ResultActivity extends AppCompatActivity {
             url = "https://en.wikipedia.org/wiki/Genesis_Motors";
         } else if(ans.equals("honda")){
             textViewResult.setText("Honda");
-            imageViewResult.setImageResource(R.drawable.hyundai);
+            imageViewResult.setImageResource(R.drawable.honda);
             url = "https://en.wikipedia.org/wiki/Honda";
         } else if(ans.equals("lexus")){
             textViewResult.setText("Lexus");
